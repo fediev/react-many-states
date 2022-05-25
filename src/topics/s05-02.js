@@ -1,16 +1,19 @@
-// s05-02 seperate contexts for state and updater
+// s05-02 seperate contexts for state value and updater
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 
 function App() {
   console.log('# render', Date.now());
   return (
     <CounterProvider>
-      <div>
-        <RenderCounter />
-        seperate contexts for state and updater
+      <div className="component">
+        <div>
+          <RenderCounter />
+          seperate contexts for state value and updater
+        </div>
+        <Middle />
       </div>
-      <Middle />
     </CounterProvider>
   );
 }
@@ -81,7 +84,7 @@ function CountButton() {
   );
 }
 
-function Middle(props) {
+function Middle() {
   return (
     <div className="component">
       <div>

@@ -1,5 +1,6 @@
-// s05-01 context
+// s05-01 passing state via context
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 
 function App() {
@@ -7,10 +8,12 @@ function App() {
   return (
     <CounterProvider>
       <div className="component">
-        <RenderCounter />
-        context
+        <div>
+          <RenderCounter />
+          passing state via context
+        </div>
+        <Middle />
       </div>
-      <Middle />
     </CounterProvider>
   );
 }
@@ -66,7 +69,7 @@ function CountButton() {
   );
 }
 
-function Middle(props) {
+function Middle() {
   return (
     <div className="component">
       <div>

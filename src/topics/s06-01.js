@@ -1,4 +1,4 @@
-// s05-03 context with `useReducer()`
+// s06-01 problem of context. no partial update
 import * as React from 'react';
 
 import RenderCounter from 'RenderCounter';
@@ -10,7 +10,7 @@ function App() {
       <div className="component">
         <div>
           <RenderCounter />
-          context with `useReducer()`
+          problem of context. no partial update
         </div>
         <Middle />
       </div>
@@ -28,10 +28,13 @@ const CounterDispatchContext = React.createContext();
 const counterReducer = (state, action) => {
   switch (action.type) {
     case 'increment': {
-      return { ...state, count: state.count + 1 };
+      return { ...state, count: state.count + state.step };
     }
     case 'decrement': {
-      return { ...state, count: state.count - 1 };
+      return { ...state, count: state.count - state.step };
+    }
+    case 'increaseStep': {
+      return { ...state, step: state.step + 1 };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -39,7 +42,7 @@ const counterReducer = (state, action) => {
   }
 };
 
-const initialState = { count: 0 };
+const initialState = { count: 0, step: 1 };
 const CounterProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(counterReducer, initialState);
 
@@ -93,12 +96,27 @@ function CountButton() {
   const handleDecreaseClick = () => {
     dispatch({ type: 'decrement' });
   };
+  const handleIncreaseStepClick = () => {
+    dispatch({ type: 'increaseStep' });
+  };
 
   return (
     <div className="component">
       <RenderCounter />
       CountButton: <button onClick={handleIncreaseClick}>increase</button>
       <button onClick={handleDecreaseClick}>decrease</button>
+      <button onClick={handleIncreaseStepClick}>increase step</button>
+    </div>
+  );
+}
+
+function StepView() {
+  const { step } = useCounterStateContext();
+
+  return (
+    <div className="component">
+      <RenderCounter />
+      StepView: {step}
     </div>
   );
 }
@@ -112,6 +130,7 @@ function Middle() {
       </div>
       <CountView />
       <CountButton />
+      <StepView />
     </div>
   );
 }

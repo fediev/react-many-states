@@ -1,5 +1,6 @@
-// s01-01 state by useState()
+// s01-01 state by `useState()`
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     <div className="component">
       <div>
         <RenderCounter />
-        state by useState()
+        state by `useState()`
       </div>
       <div>count: {count}</div>
       <div>

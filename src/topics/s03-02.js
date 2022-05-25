@@ -1,5 +1,6 @@
-// s03-01 effect, useEffect
+// s03-02 `useEffect()` and dependencies
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 import useForceRerender from 'useForceRerender';
 
@@ -20,7 +21,7 @@ function App() {
     <div className="component">
       <div>
         <RenderCounter />
-        useEffect() dependencies
+        `useEffect()` and dependencies
       </div>
       <div>count: {count}</div>
       <div>

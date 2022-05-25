@@ -1,5 +1,6 @@
-// s03-01 effect, useEffect
+// s03-01 effect, `useEffect()`
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   };
 
   React.useEffect(() => {
-    console.log('- useEffect', count);
+    console.log('- useEffect()', count);
     document.title = count;
   });
 
@@ -18,7 +19,7 @@ function App() {
     <div className="component">
       <div>
         <RenderCounter />
-        useEffect()
+        effect, useEffect()
       </div>
       <div>count: {count}</div>
       <div>

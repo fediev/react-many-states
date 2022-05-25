@@ -1,5 +1,6 @@
-// s02-02 ref by useState
+// s02-02 ref by `useState()`
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 import useForceRerender from 'useForceRerender';
 

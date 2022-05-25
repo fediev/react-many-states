@@ -1,5 +1,6 @@
 // s04-02 prop drilling
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 
 function App() {

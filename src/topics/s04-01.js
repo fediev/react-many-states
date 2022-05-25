@@ -1,5 +1,6 @@
 // s04-01 lifted state
 import * as React from 'react';
+
 import RenderCounter from 'RenderCounter';
 
 function App() {
