@@ -2,12 +2,12 @@
 import * as React from 'react';
 
 import RenderCounter from 'RenderCounter';
-import useForceRerender from 'useForceRerender';
 
 function App() {
   const forceRerender = useForceRerender();
   const countRef = React.useRef(0);
 
+  // 🧪 click increase 5 times and click forceRender
   const handleClick = () => {
     countRef.current = countRef.current + 1;
   };
@@ -29,3 +29,12 @@ function App() {
 }
 
 export default App;
+
+// ----------------------------------------
+
+// first implementation
+function useForceRerender() {
+  const [, setState] = React.useState({});
+  const forceRerender = () => setState({});
+  return forceRerender;
+}

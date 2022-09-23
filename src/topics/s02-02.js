@@ -1,4 +1,4 @@
-// s02-02 ref by `useState()`
+// s02-02 ref by `useState()`, better `useForceRerender()`
 import * as React from 'react';
 
 import RenderCounter from 'RenderCounter';

@@ -11,7 +11,7 @@ function App() {
 
   React.useEffect(() => {
     console.log('- useEffect()', count);
-    document.title = count;
+    document.title = `${count} - ${Date.now()}`;
   });
 
   console.log('# render', count, Date.now());

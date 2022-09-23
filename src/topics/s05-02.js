@@ -6,15 +6,15 @@ import RenderCounter from 'RenderCounter';
 function App() {
   console.log('# render', Date.now());
   return (
-    <CounterProvider>
-      <div className="component">
-        <div>
-          <RenderCounter />
-          seperate contexts for state value and updater
-        </div>
-        <Middle />
+    <div className="component">
+      <div>
+        <RenderCounter />
+        seperate contexts for state value and updater
       </div>
-    </CounterProvider>
+      <CounterProvider>
+        <Middle />
+      </CounterProvider>
+    </div>
   );
 }
 
@@ -31,7 +31,13 @@ function CounterProvider({ children }) {
   return (
     <CounterUpdaterContext.Provider value={setCount}>
       <CounterStateContext.Provider value={count}>
-        {children}
+        <div className="component">
+          <div>
+            <RenderCounter />
+            CounterProvider
+          </div>
+          {children}
+        </div>
       </CounterStateContext.Provider>
     </CounterUpdaterContext.Provider>
   );

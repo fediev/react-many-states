@@ -6,15 +6,15 @@ import RenderCounter from 'RenderCounter';
 function App() {
   console.log('# render', Date.now());
   return (
-    <CounterProvider>
-      <div className="component">
-        <div>
-          <RenderCounter />
-          context with `useReducer()`
-        </div>
-        <Middle />
+    <div className="component">
+      <div>
+        <RenderCounter />
+        context with `useReducer()`
       </div>
-    </CounterProvider>
+      <CounterProvider>
+        <Middle />
+      </CounterProvider>
+    </div>
   );
 }
 
@@ -46,7 +46,13 @@ const CounterProvider = ({ children }) => {
   return (
     <CounterDispatchContext.Provider value={dispatch}>
       <CounterStateContext.Provider value={state}>
-        {children}
+        <div className="component">
+          <div>
+            <RenderCounter />
+            CounterProvider
+          </div>
+          {children}
+        </div>
       </CounterStateContext.Provider>
     </CounterDispatchContext.Provider>
   );

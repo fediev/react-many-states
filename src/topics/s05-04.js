@@ -1,4 +1,4 @@
-// s05-01 passing state via context
+// s05-04 place children directly, instead of using children prop
 import * as React from 'react';
 
 import RenderCounter from 'RenderCounter';
@@ -9,11 +9,9 @@ function App() {
     <div className="component">
       <div>
         <RenderCounter />
-        Context Provider Pattern: passing state via context
+        place children directly, instead of using children prop
       </div>
-      <CounterProvider>
-        <Middle />
-      </CounterProvider>
+      <CounterProvider />
     </div>
   );
 }
@@ -24,13 +22,14 @@ export default App;
 
 const CounterContext = React.createContext();
 
-function CounterProvider({ children }) {
+function CounterProvider() {
   const [count, setCount] = React.useState(0);
   const contextValue = React.useMemo(
     () => [count, setCount],
     [count] // state updater returned by `useState` is alway identical
   );
 
+  console.log('- CounterProvider render', Date.now());
   return (
     <CounterContext.Provider value={contextValue}>
       <div className="component">
@@ -38,7 +37,7 @@ function CounterProvider({ children }) {
           <RenderCounter />
           CounterProvider
         </div>
-        {children}
+        <Middle />
       </div>
     </CounterContext.Provider>
   );
